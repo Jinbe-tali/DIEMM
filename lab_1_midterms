@@ -1,0 +1,84 @@
+#1
+def is_palindrome(palindrome):
+    palindrome = str(palindrome)
+    return palindrome == palindrome[::-1]
+
+input_pali = input("Enter a word or number: ")
+if is_palindrome(input_pali):
+    print(f"{input_pali} is a palindrome.")
+else:
+    print(f"{input_pali} is not a palindrome.")
+#2
+def get_grade(score):
+    if 90 <= score <= 100:
+        return "A"
+    elif 80 <= score < 90:
+        return "B"
+    elif 70 <= score < 80:
+        return "C"
+    elif 60 <= score < 70:
+        return "D"
+    else:
+        return "F"
+    
+input_score = int(input("Enter the score (0-100): "))
+print(f"The grade is: {get_grade(input_score)}")
+#3
+def multiply_all(*args):
+    result = 1
+    for num in args:
+        result *= num
+    return result
+#4
+def print_formatted_info(title, **kwargs):
+
+    print(title.upper())
+
+
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+
+print_formatted_info("report", name="John", score=85, status="Pass")
+
+#Activity 2
+#1
+log_line = "ERROR 2024-10-06 14:35:01 Database connection failed"
+
+parts = log_line.split(" ", 3)
+log_level = parts[0]       
+message   = parts[3]          
+
+print("log level ", log_level)
+print("message ", message)
+
+#2
+summary = "[{}] -> {}".format(log_level, message)
+print(summary)
+
+#3
+def find_all_emails(text):
+
+    words = text.split()
+    emails = []
+
+    for word in words:
+        cleaned = word.strip(".,;:()<>\"'")
+
+        if "@" in cleaned:
+            parts = cleaned.split("@")
+            if len(parts) == 2 and "." in parts[1]:
+                emails.append(cleaned)
+
+    return emails
+
+test = "Contact alice@example.com, bob.smith@company.co.uk; or admin@localhost for help."
+print(find_all_emails(test))
+
+#4
+def convert_to_title_case(underscore_string):
+    parts = [p for p in underscore_string.strip().split("_") if p != ""]
+    title_parts = [p.capitalize() for p in parts]
+    return " ".join(title_parts)
+
+print(convert_to_title_case("customer_account_id")) 
